@@ -1,60 +1,51 @@
 import Link from "next/link";
 import { Search, Clock3, ArrowRight } from "lucide-react";
+type RouteSidebarProps = {
+  title?: string;
+  description?: string;
+  showSearch?: boolean;
+  routes: Route[];
+};
+type Route = {
+  number: string;
+  route: string;
+  frequency: string;
+  status?: string;
+  color: string;
+  active: boolean;
+};
 
-const routes = [
-  {
-    number: "12A",
-    route: "City Center → Airport",
-    frequency: "Every 10 min",
-    status: "Live",
-    color: "bg-primary text-white",
-    active: true,
-  },
-  {
-    number: "7B",
-    route: "Central Park → Tech Hub",
-    frequency: "Every 12 min",
-    color: "bg-blue-100 text-blue-600",
-    active: false,
-  },
-  {
-    number: "9C",
-    route: "Railway Station → City Center",
-    frequency: "Every 15 min",
-    color: "bg-purple-100 text-purple-600",
-    active: false,
-  },
-  {
-    number: "4D",
-    route: "University → Market Street",
-    frequency: "Every 20 min",
-    color: "bg-yellow-100 text-yellow-600",
-    active: false,
-  },
-];
 
-const RouteSidebar = () => {
+const RouteSidebar = ({
+  title = "Track Your Bus Live",
+  description = "Enter bus number or stop name to see live location.",
+  showSearch = true,
+  routes,
+}: RouteSidebarProps) => {
   return (
     <div className="flex h-[600px] w-full flex-col rounded-2xl bg-white p-6 shadow-md lg:w-1/3">
       {/* Heading */}
       <h3 className="mb-2 text-xl font-bold">
-        Track Your Bus Live
+       {title}
       </h3>
 
       <p className="mb-6 text-sm text-gray-500">
-        Enter bus number or stop name to see live location.
+       {description}
       </p>
 
       {/* Search */}
-      <div className="relative mb-8">
-        <input
-          type="text"
-          placeholder="Enter bus number or stop name..."
-          className="w-full rounded-xl border border-gray-200 py-3 pl-4 pr-10 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary"
-        />
+      {showSearch && (
+        <div className="relative mb-8">
+          <input
+            type="text"
+            placeholder="Enter bus number or stop name..."
+            className="w-full rounded-xl border border-gray-200 py-3 pl-4 pr-10 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary"
+          />
 
-        <Search className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
-      </div>
+          <Search className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+        </div>
+      )}
+
 
       {/* Routes */}
       <div className="flex-1 overflow-y-auto pr-2">
