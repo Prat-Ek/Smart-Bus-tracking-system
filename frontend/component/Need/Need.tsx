@@ -1,13 +1,7 @@
 "use client";
 import { Smartphone, Users, Earth, ShieldCheck, Bell } from "lucide-react";
 import { useEffect } from "react";
-import {
-  Marker,
-  Polyline,
-  Popup,
-  TileLayer,
-  MapContainer,
-} from "react-leaflet";
+import {Marker,Polyline,Popup,TileLayer,MapContainer} from "react-leaflet";
 import L from "leaflet";
 
 const features = [

@@ -1,3 +1,4 @@
+'use client'
 import Feature from "@/component/features/Feature";
 import BusSearchHeader from "@/component/head/BusSearchHeader"
 import MapView from "@/component/LiveTracking/MapView";

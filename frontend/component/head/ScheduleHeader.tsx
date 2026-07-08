@@ -1,72 +1,61 @@
-"use client";
-
-import { CheckCheck, ChevronDown } from "lucide-react";
-import { useState } from "react";
-
-const categories = [
-    {
-      name: "All",
-      count: 24,
-      badge: "bg-primary text-white",
-    },
-    {
-      name: "Alerts",
-      count: 6,
-      badge: "bg-red-100 text-red-600",
-    },
-    {
-      name: "Service Updates",
-      count: 8,
-      badge: "bg-blue-100 text-blue-600",
-    },
-    {
-      name: "Promotions",
-      count: 2,
-      badge: "bg-purple-100 text-purple-600",
-    },
-    {
-      name: "General",
-      count: 8,
-      badge: "bg-gray-200 text-gray-700",
-    },
-  ];
-
+import {
+    IoCalendarOutline,
+    IoChevronDown,
+  } from "react-icons/io5";
 const ScheduleHeader = () => {
-    const [activeCategory, setActiveCategory] = useState("All")
   return (
-    <div className="mb-6 flex flex-col justify-between gap-4 rounded-xl border border-gray-200 bg-white p-2 shadow-sm lg:flex-row lg:items-center">
-      <div className="flex flex-wrap items-center gap-2">
-        {categories.map((item) => (
-          <button
-          onClick={() => setActiveCategory(item.name)}
-            key={item.name}
-            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition
-                ${
-                  activeCategory === item.name
-                    ? "bg-green-100 text-primary"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
-          >
-            {item.name}
+    <div className="flex gap-4 rounded-xl border border-gray-200 bg-white p-5">
+      <div className="flex-1">
+        <label className="mb-2 block text-sm font-medium text-gray-700">
+          Select Date
+        </label>
 
-            <span
-              className={`rounded-full px-2 py-0.5 text-xs font-semibold ${item.badge}`}
-            >
-              {item.count}
-            </span>
-          </button>
-        ))}
+        <div className="relative">
+          <input
+            type="text"
+            value="May 31, 2025"
+            readOnly
+            className="w-full rounded-lg border border-gray-300 py-2.5 pl-4 pr-10 text-sm text-gray-900 focus:border-green-500 focus:outline-none"
+          />
+
+          <IoCalendarOutline className="absolute right-3 top-1/2 -translate-y-1/2 text-lg text-gray-400" />
+        </div>
       </div>
 
-      <button className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50">
-        <CheckCheck className="h-4 w-4" />
+      <div className="flex-1">
+        <label className="mb-2 block text-sm font-medium text-gray-700">
+          Select Route
+        </label>
 
-        <span>Mark all as read</span>
+        <div className="relative">
+          <select className="w-full appearance-none rounded-lg border border-gray-300 bg-white py-2.5 pl-4 pr-10 text-sm text-gray-900 focus:border-green-500 focus:outline-none">
+            <option>All Routes</option>
+            <option>Route A</option>
+            <option>Route B</option>
+            <option>Route C</option>
+          </select>
 
-        <ChevronDown className="h-4 w-4" />
-      </button>
+          <IoChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500" />
+        </div>
+      </div>
+
+      <div className="flex-1">
+        <label className="mb-2 block text-sm font-medium text-gray-700">
+          Select Direction
+        </label>
+
+        <div className="relative">
+          <select className="w-full appearance-none rounded-lg border border-gray-300 bg-white py-2.5 pl-4 pr-10 text-sm text-gray-900 focus:border-green-500 focus:outline-none">
+            <option>All Directions</option>
+            <option>Outbound</option>
+            <option>Inbound</option>
+          </select>
+
+          <IoChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500" />
+        </div>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default ScheduleHeader;
+export default ScheduleHeader
